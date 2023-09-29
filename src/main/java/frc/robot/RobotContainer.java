@@ -14,9 +14,11 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Commands.ExampleCommand;
 import frc.robot.Subsystems.ExampleSubsystem;
+import frc.robot.Subsystems.FancyNewSubsteam;
 
 public class RobotContainer {
-  public ExampleSubsystem exampleSubsystem;
+  private ExampleSubsystem exampleSubsystem;
+  private FancyNewSubsteam mySubsteam;
 
   private Joystick joystick0;
 
@@ -37,8 +39,11 @@ public class RobotContainer {
 
   private void defineSubsystems() {
     exampleSubsystem = new ExampleSubsystem();
+    mySubsteam = new FancyNewSubsteam();
+
   }
 
+  
   public Command getAutonomousCommand() {
     return new InstantCommand(() -> exampleSubsystem.runForward())
         .andThen(new WaitCommand(2))
