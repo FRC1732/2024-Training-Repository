@@ -13,7 +13,7 @@ public class ExampleSubsystem extends SubsystemBase{
     private CANSparkMax exampleMotor;
 
     public ExampleSubsystem() {
-        exampleMotor = new CANSparkMax(Constants.EXAMPLE_MOTOR_CAN_ID, CANSparkMax.MotorType.kBrushless);
+        exampleMotor = new CANSparkMax(Constants.EXAMPLE_SECOND_MOTOR_CAN_ID, CANSparkMax.MotorType.kBrushless);
     }
 
     public void runForward() {
