@@ -7,39 +7,47 @@ package frc.robot;
 import com.fasterxml.jackson.core.util.DefaultIndenter;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.Commands.ExampleCommand;
+import frc.robot.Commands.NewCommand;
 import frc.robot.Subsystems.ExampleSubsystem;
+import frc.robot.Subsystems.ForwardBackSub;
 
 public class RobotContainer {
-  public ExampleSubsystem exampleSubsystem;
-
+  private ExampleSubsystem exampleSubsystem;
+  private ForwardBackSub forwardBackSub;
   private Joystick joystick0;
 
   private Trigger trigger0;
+
 
   public RobotContainer() {
     defineSubsystems();
     configureButtonBindings();
 
-    trigger0.whileTrue(new ExampleCommand(exampleSubsystem));
+    trigger0.whileTrue(new NewCommand(forwardBackSub));
   }
 
   private void configureButtonBindings() {
     joystick0 = new Joystick(0);
 
-    trigger0 = new Trigger(() -> joystick0.getRawButton(1));
+    trigger0 = new Trigger(() -> joystick0.getRawButton(2));
+
   }
 
   private void defineSubsystems() {
     exampleSubsystem = new ExampleSubsystem();
+    forwardBackSub = new ForwardBackSub();
+
   }
 
-  public Command getAutonomousCommand() {
+  
+
+    public Command getAutonomousCommand() {
     return new InstantCommand(() -> exampleSubsystem.runForward())
         .andThen(new WaitCommand(2))
         .andThen(new InstantCommand(() -> exampleSubsystem.stop()));
