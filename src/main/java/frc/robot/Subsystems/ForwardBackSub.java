@@ -11,7 +11,7 @@ import frc.robot.Constants;
 public class ForwardBackSub extends SubsystemBase{
     
     private CANSparkMax exampleMotor;
-
+    
     public ForwardBackSub() {
         exampleMotor = new CANSparkMax(Constants.EXAMPLE_MOTOR_CAN_ID, CANSparkMax.MotorType.kBrushless);
     }
