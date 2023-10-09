@@ -13,30 +13,37 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Commands.ExampleCommand;
+import frc.robot.Commands.PracticeCommand;
 import frc.robot.Subsystems.ExampleSubsystem;
+import frc.robot.Subsystems.PracticeSubsystem;
 
 public class RobotContainer {
-  public ExampleSubsystem exampleSubsystem;
+  private ExampleSubsystem exampleSubsystem;
+  private PracticeSubsystem practiceSubsystem;
 
   private Joystick joystick0;
 
   private Trigger trigger0;
+  private Trigger trigger1;
 
   public RobotContainer() {
     defineSubsystems();
     configureButtonBindings();
 
     trigger0.whileTrue(new ExampleCommand(exampleSubsystem));
+    trigger1.whileTrue(new PracticeCommand(practiceSubsystem));
   }
 
   private void configureButtonBindings() {
     joystick0 = new Joystick(0);
 
     trigger0 = new Trigger(() -> joystick0.getRawButton(1));
+    trigger1 = new Trigger(()-> joystick0.getRawButton(2));
   }
 
   private void defineSubsystems() {
     exampleSubsystem = new ExampleSubsystem();
+      practiceSubsystem = new PracticeSubsystem();
   }
 
   public Command getAutonomousCommand() {
