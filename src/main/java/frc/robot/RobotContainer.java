@@ -13,8 +13,10 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.Commands.EpicNewComm;
 import frc.robot.Commands.FancyNewComm;
 import frc.robot.Commands.NewCommand;
+import frc.robot.Subsystems.EpicNewSub;
 import frc.robot.Subsystems.ExampleSubsystem;
 import frc.robot.Subsystems.FancyNewSub;
 import frc.robot.Subsystems.ForwardBackSub;
@@ -23,9 +25,12 @@ public class RobotContainer {
   private ExampleSubsystem exampleSubsystem;
   private FancyNewSub fancyNewSub;
   private ForwardBackSub forwardBackSub;
+  private EpicNewSub epicNewSub;
   private Joystick joystick0;
+  private Trigger trigger2;
   private Trigger trigger1; 
   private Trigger trigger0;
+
 
 
   public RobotContainer() {
@@ -34,6 +39,7 @@ public class RobotContainer {
 
     trigger0.whileTrue(new NewCommand(forwardBackSub));
     trigger1.whileTrue(new FancyNewComm(fancyNewSub));
+    trigger2.whileTrue(new EpicNewComm(epicNewSub));
   }
 
   private void configureButtonBindings() {
@@ -41,6 +47,8 @@ public class RobotContainer {
 
     trigger1 = new Trigger(() -> joystick0.getRawButton(1));
     trigger0 = new Trigger(() -> joystick0.getRawButton(2));
+    trigger2 = new Trigger(() -> joystick0.getRawButton(3));
+   
 
   }
 
@@ -48,6 +56,7 @@ public class RobotContainer {
     exampleSubsystem = new ExampleSubsystem();
     forwardBackSub = new ForwardBackSub();
     fancyNewSub = new FancyNewSub();
+    epicNewSub = new EpicNewSub();
 
   }
 
