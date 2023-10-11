@@ -16,7 +16,7 @@ public class FancyNewComm extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        fancyNewSub.runForward();
+        fancyNewSub.runBackward();
     }
 
     // Called every time the scheduler runs while the command is scheduled.
