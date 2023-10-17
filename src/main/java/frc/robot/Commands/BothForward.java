@@ -4,11 +4,11 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Subsystems.EpicNewSub;
 
 
-public class EpicNewComm extends CommandBase {
+public class BothForward extends CommandBase {
     
     private EpicNewSub epicNewSub;
 
-    public EpicNewComm(EpicNewSub epicNewSub) {
+    public BothForward(EpicNewSub epicNewSub) {
         addRequirements(epicNewSub);
         this.epicNewSub = epicNewSub;
     }

@@ -32,6 +32,15 @@ public class EpicNewSub extends SubsystemBase{
         canSparkMax2.set(Constants.EXAMPLE_BACKWARD_SPEED);
     }
 
+    public void turnLeft(){
+        canSparkMax.set(Constants.EXAMPLE_BACKWARD_SPEED);
+        canSparkMax2.set(Constants.EXAMPLE_FORWARD_SPEED);
+    }
+    public void turnRight(){
+        canSparkMax.set(Constants.EXAMPLE_FORWARD_SPEED);
+        canSparkMax2.set(Constants.EXAMPLE_BACKWARD_SPEED);
+    }
+
     public void stop() {
         canSparkMax.set(0);
         canSparkMax2.set(0);

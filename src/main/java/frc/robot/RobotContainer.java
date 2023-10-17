@@ -13,10 +13,12 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.Commands.EpicNewComm;
+import frc.robot.Commands.BothForward;
 import frc.robot.Commands.FancyNewComm;
 import frc.robot.Commands.FullBackComm;
 import frc.robot.Commands.NewCommand;
+import frc.robot.Commands.TurnLeft;
+import frc.robot.Commands.TurnRight;
 import frc.robot.Subsystems.EpicNewSub;
 import frc.robot.Subsystems.ExampleSubsystem;
 import frc.robot.Subsystems.FancyNewSub;
@@ -39,9 +41,9 @@ public class RobotContainer {
     defineSubsystems();
     configureButtonBindings();
 
-    trigger0.whileTrue(new NewCommand(forwardBackSub));
-    trigger1.whileTrue(new FancyNewComm(fancyNewSub));
-    trigger2.whileTrue(new EpicNewComm(epicNewSub));
+    trigger0.whileTrue(new TurnLeft(epicNewSub));
+    trigger1.whileTrue(new TurnRight(epicNewSub));
+    trigger2.whileTrue(new BothForward(epicNewSub));
     trigger3.whileTrue(new FullBackComm(epicNewSub));
   }
 
@@ -52,6 +54,7 @@ public class RobotContainer {
     trigger0 = new Trigger(() -> joystick0.getRawButton(2));
     trigger2 = new Trigger(() -> joystick0.getRawButton(4));
     trigger3 = new Trigger(() -> joystick0.getRawButton(1));
+   
    
 
   }
