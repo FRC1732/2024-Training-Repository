@@ -16,32 +16,37 @@ public class ExampleSubsystem extends SubsystemBase{
     
     private CANSparkMax exampleMotor;
     private ShuffleboardTab exampleTab;
-    private double speed;
+    private double setPoint;
 
     public ExampleSubsystem() {
         exampleMotor = new CANSparkMax(Constants.EXAMPLE_MOTOR_CAN_ID, CANSparkMax.MotorType.kBrushless);
-        speed = 0;
+        setPoint = 0;
         setUpShuffleboard();
     }
 
     public void runForward() {
         exampleMotor.set(Constants.EXAMPLE_FORWARD_SPEED);
-        speed = Constants.EXAMPLE_FORWARD_SPEED;
+        setPoint = Constants.EXAMPLE_FORWARD_SPEED;
     }
 
     public void runBackward() {
         exampleMotor.set(Constants.EXAMPLE_BACKWARD_SPEED);
-        speed = Constants.EXAMPLE_BACKWARD_SPEED;
+        setPoint = Constants.EXAMPLE_BACKWARD_SPEED;
     }
 
     public void stop() {
         exampleMotor.set(0);
-        speed = 0;
+        setPoint = 0;
+    }
+
+    public double getSetPoint() {
+        return setPoint;
     }
 
     public void setUpShuffleboard() {
         ShuffleboardTab exampleTab;
         exampleTab = Shuffleboard.getTab("Example Subsystem");
-        exampleTab.addDouble("Speed", () -> exampleMotor.getEncoder().getVelocity());
+        exampleTab.addDouble("Setpoint", () -> getSetPoint());
+        exampleTab.addDouble("Velocity", () -> exampleMotor.getEncoder().getVelocity());
     }
 }
