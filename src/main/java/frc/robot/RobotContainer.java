@@ -12,11 +12,11 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.Commands.ExampleCommand;
-import frc.robot.Subsystems.ExampleSubsystem;
+import frc.robot.Commands.AwesomeCommand;
+import frc.robot.Subsystems.AwesomeSubsystem;
 
 public class RobotContainer {
-  public ExampleSubsystem exampleSubsystem;
+  public AwesomeSubsystem awesomeSubsystem;
 
   private Joystick joystick0;
 
@@ -26,7 +26,7 @@ public class RobotContainer {
     defineSubsystems();
     configureButtonBindings();
 
-    trigger0.whileTrue(new ExampleCommand(exampleSubsystem));
+    trigger0.whileTrue(new AwesomeCommand(awesomeSubsystem));
   }
 
   private void configureButtonBindings() {
@@ -36,13 +36,13 @@ public class RobotContainer {
   }
 
   private void defineSubsystems() {
-    exampleSubsystem = new ExampleSubsystem();
+    awesomeSubsystem = new AwesomeSubsystem();
   }
 
   public Command getAutonomousCommand() {
-    return new InstantCommand(() -> exampleSubsystem.runForward())
+    return new InstantCommand(() -> awesomeSubsystem.runForward())
         .andThen(new WaitCommand(2))
-        .andThen(new InstantCommand(() -> exampleSubsystem.stop()));
+        .andThen(new InstantCommand(() -> awesomeSubsystem.stop()));
   }
 
 }
