@@ -17,6 +17,8 @@ public class BothForward extends CommandBase {
     @Override
     public void initialize() {
         epicNewSub.runForwardAll();
+        System.out.println("Init Forward");
+        
     }
 
     // Called every time the scheduler runs while the command is scheduled.

@@ -14,20 +14,13 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Commands.BothForward;
-import frc.robot.Commands.FancyNewComm;
 import frc.robot.Commands.FullBackComm;
-import frc.robot.Commands.NewCommand;
 import frc.robot.Commands.TurnLeft;
 import frc.robot.Commands.TurnRight;
 import frc.robot.Subsystems.EpicNewSub;
-import frc.robot.Subsystems.ExampleSubsystem;
-import frc.robot.Subsystems.FancyNewSub;
-import frc.robot.Subsystems.ForwardBackSub;
+
 
 public class RobotContainer {
-  private ExampleSubsystem exampleSubsystem;
-  private FancyNewSub fancyNewSub;
-  private ForwardBackSub forwardBackSub;
   private EpicNewSub epicNewSub;
   private Joystick joystick0;
   private Trigger trigger3;
@@ -60,9 +53,6 @@ public class RobotContainer {
   }
 
   private void defineSubsystems() {
-    exampleSubsystem = new ExampleSubsystem();
-    forwardBackSub = new ForwardBackSub();
-    fancyNewSub = new FancyNewSub();
     epicNewSub = new EpicNewSub();
 
   }
@@ -70,9 +60,9 @@ public class RobotContainer {
   
 
     public Command getAutonomousCommand() {
-    return new InstantCommand(() -> exampleSubsystem.runForward())
+    return new InstantCommand(() -> epicNewSub.runForwardAll())
         .andThen(new WaitCommand(2))
-        .andThen(new InstantCommand(() -> exampleSubsystem.stop()));
+        .andThen(new InstantCommand(() -> epicNewSub.stop()));
   }
 
 }

@@ -17,6 +17,7 @@ public class FullBackComm extends CommandBase {
     @Override
     public void initialize() {
         epicNewSub.runBackwardAll();
+        System.out.println("Init Back");
     }
 
     // Called every time the scheduler runs while the command is scheduled.

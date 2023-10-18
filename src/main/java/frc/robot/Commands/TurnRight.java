@@ -17,6 +17,7 @@ public class TurnRight extends CommandBase {
     @Override
     public void initialize() {
         epicNewSub.turnRight();
+        System.out.println("Init Right");
     }
 
     // Called every time the scheduler runs while the command is scheduled.
