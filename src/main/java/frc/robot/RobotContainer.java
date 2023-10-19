@@ -12,11 +12,11 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.Commands.ExampleCommand;
-import frc.robot.Subsystems.ExampleSubsystem;
+import frc.robot.Commands.ForwardBackCommand;
+import frc.robot.Subsystems.MoveForwardBack;
 
 public class RobotContainer {
-  public ExampleSubsystem exampleSubsystem;
+  private MoveForwardBack MoveForwardBack;
 
   private Joystick joystick0;
 
@@ -26,7 +26,7 @@ public class RobotContainer {
     defineSubsystems();
     configureButtonBindings();
 
-    trigger0.whileTrue(new ExampleCommand(exampleSubsystem));
+    trigger0.whileTrue(new ForwardBackCommand(MoveForwardBack));
   }
 
   private void configureButtonBindings() {
@@ -36,13 +36,13 @@ public class RobotContainer {
   }
 
   private void defineSubsystems() {
-    exampleSubsystem = new ExampleSubsystem();
+    MoveForwardBack = new MoveForwardBack();
   }
 
   public Command getAutonomousCommand() {
-    return new InstantCommand(() -> exampleSubsystem.runForward())
+    return new InstantCommand(() -> MoveForwardBack.moveForward())
         .andThen(new WaitCommand(2))
-        .andThen(new InstantCommand(() -> exampleSubsystem.stop()));
+        .andThen(new InstantCommand(() -> MoveForwardBack.stop()));
   }
 
 }
