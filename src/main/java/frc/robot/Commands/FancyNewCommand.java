@@ -5,28 +5,44 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Subsystems.ExampleSubsystem;
+import frc.robot.Subsystems.FancyNewSubsystem;
 
 public class FancyNewCommand extends CommandBase {
-  /** Creates a new FancyNewCommand. */
-  public FancyNewCommand() {
-    // Use addRequirements() here to declare subsystem dependencies.
-  }
+    
+    FancyNewSubsystem fancyNewSubsystem;
+    
 
-  // Called when the command is initially scheduled.
-  @Override
-  public void initialize() {}
+    public FancyNewCommand(FancyNewSubsystem mySubsystem) {
+        addRequirements(mySubsystem);
+        this.fancyNewSubsystem = mySubsystem;
+    }
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {}
+    // Called when the command is initially scheduled.
+    @Override
+    public void initialize() {
+        fancyNewSubsystem.runForward();
+        
+    }
 
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {}
+   
 
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+    // Called every time the scheduler runs while the command is scheduled.
+    @Override
+    public void execute() {}
+
+    // Called once the command ends or is interrupted.
+    @Override
+    public void end(boolean interrupted) {
+        fancyNewSubsystem.stop();
+    }
+
+   
+    
+
+    // Returns true when the command should end.
+    @Override
+    public boolean isFinished() {
+        return false;
+    }
 }

@@ -13,11 +13,11 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Commands.ExampleCommand;
+import frc.robot.Commands.FancyNewCommand;
 import frc.robot.Subsystems.ExampleSubsystem;
 import frc.robot.Subsystems.FancyNewSubsystem;
 
 public class RobotContainer {
-  private static final String fancyNewSubsystem = null;
   public ExampleSubsystem exampleSubsystem;
   private FancyNewSubsystem mySubsystem;
   private Joystick joystick0;
@@ -28,7 +28,7 @@ public class RobotContainer {
     defineSubsystems();
     configureButtonBindings();
 
-    trigger0.whileTrue(new ExampleCommand(exampleSubsystem));
+    trigger0.whileTrue(new FancyNewCommand(mySubsystem));
   }
 
   private void configureButtonBindings() {
