@@ -77,5 +77,7 @@ public class EpicNewSub extends SubsystemBase{
         epicTab.addDouble("Setpoint2", () -> getSetPoint2());
         epicTab.addDouble("VelocityL", () -> canSparkMax.getEncoder().getVelocity());
         epicTab.addDouble("VelocityR", () -> canSparkMax2.getEncoder().getVelocity());
+        epicTab.addDouble("MotorL Temp", () ->  canSparkMax.getMotorTemperature());
+        epicTab.addDouble("MotorR Temp", () ->  canSparkMax2.getMotorTemperature());
     }
 }

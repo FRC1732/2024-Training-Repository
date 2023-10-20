@@ -62,6 +62,8 @@ public class RobotContainer {
     public Command getAutonomousCommand() {
     return new InstantCommand(() -> epicNewSub.runForwardAll())
         .andThen(new WaitCommand(2))
+        .andThen(new InstantCommand(() -> epicNewSub.turnLeft()))
+        .andThen(new WaitCommand(1.25))
         .andThen(new InstantCommand(() -> epicNewSub.stop()));
   }
 
