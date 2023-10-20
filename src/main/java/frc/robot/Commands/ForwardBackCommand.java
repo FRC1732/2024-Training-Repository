@@ -20,6 +20,7 @@ public class ForwardBackCommand extends CommandBase {
   @Override
   public void initialize() {
     moveForwardBack.moveForward();
+    System.out.println("Initialize Foraward");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -30,6 +31,8 @@ public class ForwardBackCommand extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     moveForwardBack.stop();
+    System.out.println("End Foraward");
+
   }
 
   // Returns true when the command should end.
